@@ -180,7 +180,7 @@ export const addComment = async (
 export const getComment = async (mediaType: string) => {
   const response = await axios({
     method: 'GET',
-    url: `${baseURL}/starrecords/videos/${mediaType}/comments`
+    url: `${baseURL}/starrecords/${mediaType}/comments`
   });
 
   return response;
