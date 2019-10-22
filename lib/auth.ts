@@ -3,7 +3,9 @@ import axios from 'axios';
 import { getCookie } from '../lib/cookieStorage';
 import cookie from 'js-cookie';
 
-export const baseURL = process.env.baseUrl || 'http://localhost:3002';
+export const baseURL =
+  'https://a4k5wpp3pc.execute-api.us-east-1.amazonaws.com/prod' ||
+  'http://localhost:3002';
 
 export const LoginUser = async (email: string, password: string) => {
   const response = await axios.post(`${baseURL}/login`, {
