@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { baseURL } from './auth';
+import cookie from 'js-cookie';
 
 export const Subscription = async (
   cardNumber: number,
@@ -9,8 +10,13 @@ export const Subscription = async (
   Month: number,
   year: number
 ) => {
-  const response = await axios.post(`${baseURL}/starrecords/subscription`, {
-    data: { cardNumber, cvv, userId: userId, postCode, Month, year }
+  const response = await axios({
+    method: 'POST',
+    url: `${baseURL}/starrecords/subscription`,
+    data: { cardNumber, cvv, userId: userId, postCode, Month, year },
+    headers: {
+      'x-access-token': cookie.get('superstar_token')
+    }
   });
 
   return response;
