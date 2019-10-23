@@ -51,11 +51,9 @@ class Dashboard extends Component {
 
     addMusic(albumart, title, url)
       .then(res => {
-        console.log('ADDED MUSIC', res);
         this.closeModal('music');
       })
       .catch(e => {
-        console.log('ERRROR', e);
         this.closeModal('music');
       });
   };
@@ -66,28 +64,22 @@ class Dashboard extends Component {
 
     addPicture(caption, url)
       .then(res => {
-        console.log('ADDED PHOTO', res);
         this.closeModal('photo');
       })
       .catch(e => {
-        console.log('ERRROR', e);
         this.closeModal('photo');
       });
   };
   handleAddVideo = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    console.log(this.state.video);
-
     const { title, thumb_nail, url } = this.state.video;
 
     addVideo(title, thumb_nail, url)
       .then(res => {
-        console.log('ADDED VIDEO', res);
         this.closeModal('video');
       })
       .catch(e => {
-        console.log('ERRROR', e);
         this.closeModal('video');
       });
   };
@@ -98,11 +90,9 @@ class Dashboard extends Component {
 
     addTour(venue)
       .then(res => {
-        console.log('TOUR', res.data);
         this.closeModal('tour');
       })
       .catch(e => {
-        console.log('ERROR', e);
         this.closeModal('tour');
       });
   };

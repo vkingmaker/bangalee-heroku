@@ -16,7 +16,7 @@ export const addMusic = async (
   const response = await axios.post(
     `${baseURL}/starrecords/musics`,
     {
-      data: { albumart, title, url, token: cookie.get('superstar_token') }
+      data: { albumart, title, url }
     },
     {
       headers: {
@@ -33,7 +33,7 @@ export const deleteMusic = async (musicId: string, title: string) => {
   const response = await axios({
     method: 'DELETE',
     url: `${baseURL}/starrecords/musics/${musicId}`,
-    data: { title, token: cookie.get('superstar_token') },
+    data: { title },
     headers: {
       'x-access-token': cookie.get('superstar_token'),
       'Content-Type': 'application/json'
@@ -47,7 +47,7 @@ export const likeMusic = async (musicId: string, title: string) => {
   const response = await axios({
     method: 'PATCH',
     url: `${baseURL}/starrecords/musics/${musicId}/like`,
-    data: { title, token: cookie.get('superstar_token') },
+    data: { title },
     headers: {
       'x-access-token': cookie.get('superstar_token'),
       'Content-Type': 'application/json'
@@ -60,7 +60,7 @@ export const likePicture = async (photoId: string, caption: string) => {
   const response = await axios({
     method: 'PATCH',
     url: `${baseURL}/starrecords/photos/${photoId}/like`,
-    data: { caption, token: cookie.get('superstar_token') },
+    data: { caption },
     headers: {
       'x-access-token': cookie.get('superstar_token'),
       'Content-Type': 'application/json'

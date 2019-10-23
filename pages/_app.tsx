@@ -25,16 +25,7 @@ class MyApp extends App {
   }
 
   render() {
-    {
-      console.log('_app Props', this.props);
-    }
     const { Component, pageProps } = this.props;
-    {
-      console.log('COMPONENTTTTTT', Component);
-    }
-    {
-      console.log('PAGEPROPS', pageProps);
-    }
 
     return (
       <React.Fragment>

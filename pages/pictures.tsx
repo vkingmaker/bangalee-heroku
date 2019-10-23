@@ -34,7 +34,6 @@ class Pictures extends Component {
         this.setState({
           picture: [...updatedPicture]
         });
-        console.log(res);
       })
       .catch(err => {
         console.log(err);
