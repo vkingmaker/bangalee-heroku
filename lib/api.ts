@@ -1,6 +1,5 @@
 import axios from 'axios';
 import cookie from 'js-cookie';
-import { IComment } from '../lib/interface/types';
 import { baseURL } from './auth';
 
 export const getMusic = async () => {
