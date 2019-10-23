@@ -31,6 +31,7 @@
   "resolutions": {
     "styled-jsx": "3.0.0"
   },
+  "proxy": "https://a4k5wpp3pc.execute-api.us-east-1.amazonaws.com/prod",
   "devDependencies": {
     "@types/express": "^4.17.1",
     "@types/js-cookie": "^2.2.2",
