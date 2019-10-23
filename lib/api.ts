@@ -16,11 +16,11 @@ export const addMusic = async (
   const response = await axios.post(
     `${baseURL}/starrecords/musics`,
     {
-      data: { albumart, title, url }
+      data: { albumart, title, url, token: cookie.get('superstar_token') }
     },
     {
       headers: {
-        'x-access-token': cookie.get('superstar_token'),
+        // 'x-access-token': cookie.get('superstar_token'),
         'Content-Type': 'application/json'
       }
     }
@@ -33,9 +33,9 @@ export const deleteMusic = async (musicId: string, title: string) => {
   const response = await axios({
     method: 'DELETE',
     url: `${baseURL}/starrecords/musics/${musicId}`,
-    data: { title },
+    data: { title, token: cookie.get('superstar_token') },
     headers: {
-      'x-access-token': cookie.get('superstar_token'),
+      // 'x-access-token': cookie.get('superstar_token'),
       'Content-Type': 'application/json'
     }
   });
@@ -47,9 +47,9 @@ export const likeMusic = async (musicId: string, title: string) => {
   const response = await axios({
     method: 'PATCH',
     url: `${baseURL}/starrecords/musics/${musicId}/like`,
-    data: { title },
+    data: { title, token: cookie.get('superstar_token') },
     headers: {
-      'x-access-token': cookie.get('superstar_token'),
+      // 'x-access-token': cookie.get('superstar_token'),
       'Content-Type': 'application/json'
     }
   });
@@ -60,9 +60,9 @@ export const likePicture = async (photoId: string, caption: string) => {
   const response = await axios({
     method: 'PATCH',
     url: `${baseURL}/starrecords/photos/${photoId}/like`,
-    data: { caption },
+    data: { caption, token: cookie.get('superstar_token') },
     headers: {
-      'x-access-token': cookie.get('superstar_token'),
+      // 'x-access-token': cookie.get('superstar_token'),
       'Content-Type': 'application/json'
     }
   });
@@ -73,9 +73,9 @@ export const deletePicture = async (photoId: string, caption: string) => {
   const response = await axios({
     method: 'DELETE',
     url: `${baseURL}/starrecords/photos/${photoId}`,
-    data: { caption },
+    data: { caption, token: cookie.get('superstar_token') },
     headers: {
-      'x-access-token': cookie.get('superstar_token'),
+      // 'x-access-token': cookie.get('superstar_token'),
       'Content-Type': 'application/json'
     }
   });
@@ -93,9 +93,9 @@ export const addPicture = async (caption: string, url: string) => {
   const response = await axios({
     method: 'POST',
     url: `${baseURL}/starrecords/photos`,
-    data: { caption, url },
+    data: { caption, url, token: cookie.get('superstar_token') },
     headers: {
-      'x-access-token': cookie.get('superstar_token'),
+      // 'x-access-token': cookie.get('superstar_token'),
       'Content-Type': 'application/json'
     }
   });
@@ -113,9 +113,9 @@ export const addTour = async (venue: string) => {
   const response = await axios({
     method: 'POST',
     url: `${baseURL}/starrecords/tours`,
-    data: { venue },
+    data: { venue, token: cookie.get('superstar_token') },
     headers: {
-      'x-access-token': cookie.get('superstar_token'),
+      // 'x-access-token': cookie.get('superstar_token'),
       'Content-Type': 'application/json'
     }
   });
@@ -131,9 +131,9 @@ export const addVideo = async (
   const response = await axios({
     method: 'POST',
     url: `${baseURL}/starrecords/videos`,
-    data: { title, thumb_nail, url },
+    data: { title, thumb_nail, url, token: cookie.get('superstar_token') },
     headers: {
-      'x-access-token': cookie.get('superstar_token'),
+      // 'x-access-token': cookie.get('superstar_token'),
       'Content-Type': 'application/json'
     }
   });
@@ -151,9 +151,9 @@ export const likeVideo = async (videoId: string, title: string) => {
   const response = await axios({
     method: 'PATCH',
     url: `${baseURL}/starrecords/videos/${videoId}/like`,
-    data: { title },
+    data: { title, token: cookie.get('superstar_token') },
     headers: {
-      'x-access-token': cookie.get('superstar_token'),
+      // 'x-access-token': cookie.get('superstar_token'),
       'Content-Type': 'application/json'
     }
   });
@@ -164,9 +164,9 @@ export const deleteVideo = async (videoId: string, title: string) => {
   const response = await axios({
     method: 'DELETE',
     url: `${baseURL}/starrecords/videos/${videoId}`,
-    data: { title },
+    data: { title, token: cookie.get('superstar_token') },
     headers: {
-      'x-access-token': cookie.get('superstar_token'),
+      // 'x-access-token': cookie.get('superstar_token'),
       'Content-Type': 'application/json'
     }
   });
@@ -183,9 +183,9 @@ export const addComment = async (
   const response = await axios({
     method: 'POST',
     url: `${baseURL}/starrecords/videos/${videoId}/comment`,
-    data: { userId, comment, mediaType },
+    data: { userId, comment, mediaType, token: cookie.get('superstar_token') },
     headers: {
-      'x-access-token': cookie.get('superstar_token'),
+      // 'x-access-token': cookie.get('superstar_token'),
       'Content-Type': 'application/json'
     }
   });
