@@ -6,7 +6,7 @@ import cookie from 'js-cookie';
 // export const baseURL = 'http://localhost:3003';
 
 export const baseURL =
-  'https://a4k5wpp3pc.execute-api.us-east-1.amazonaws.com/prod' ||
+  'https://3ggbxm96fj.execute-api.us-east-1.amazonaws.com/prod' ||
   'http://localhost:3000';
 
 export const LoginUser = async (email: string, password: string) => {

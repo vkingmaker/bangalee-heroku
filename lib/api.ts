@@ -20,7 +20,7 @@ export const addMusic = async (
     },
     {
       headers: {
-        idToken: cookie.get('superstar_token'),
+        'x-access-token': cookie.get('superstar_token'),
         'Content-Type': 'application/json'
       }
     }
@@ -35,7 +35,7 @@ export const deleteMusic = async (musicId: string, title: string) => {
     url: `${baseURL}/starrecords/musics/${musicId}`,
     data: { title },
     headers: {
-      idToken: cookie.get('superstar_token'),
+      'x-access-token': cookie.get('superstar_token'),
       'Content-Type': 'application/json'
     }
   });
@@ -49,7 +49,7 @@ export const likeMusic = async (musicId: string, title: string) => {
     url: `${baseURL}/starrecords/musics/${musicId}/like`,
     data: { title },
     headers: {
-      idToken: cookie.get('superstar_token'),
+      'x-access-token': cookie.get('superstar_token'),
       'Content-Type': 'application/json'
     }
   });
@@ -62,7 +62,7 @@ export const likePicture = async (photoId: string, caption: string) => {
     url: `${baseURL}/starrecords/photos/${photoId}/like`,
     data: { caption },
     headers: {
-      idToken: cookie.get('superstar_token'),
+      'x-access-token': cookie.get('superstar_token'),
       'Content-Type': 'application/json'
     }
   });
@@ -75,7 +75,7 @@ export const deletePicture = async (photoId: string, caption: string) => {
     url: `${baseURL}/starrecords/photos/${photoId}`,
     data: { caption },
     headers: {
-      idToken: cookie.get('superstar_token'),
+      'x-access-token': cookie.get('superstar_token'),
       'Content-Type': 'application/json'
     }
   });
@@ -95,7 +95,7 @@ export const addPicture = async (caption: string, url: string) => {
     url: `${baseURL}/starrecords/photos`,
     data: { caption, url },
     headers: {
-      idToken: cookie.get('superstar_token'),
+      'x-access-token': cookie.get('superstar_token'),
       'Content-Type': 'application/json'
     }
   });
@@ -115,7 +115,7 @@ export const addTour = async (venue: string) => {
     url: `${baseURL}/starrecords/tours`,
     data: { venue },
     headers: {
-      idToken: cookie.get('superstar_token'),
+      'x-access-token': cookie.get('superstar_token'),
       'Content-Type': 'application/json'
     }
   });
@@ -133,7 +133,7 @@ export const addVideo = async (
     url: `${baseURL}/starrecords/videos`,
     data: { title, thumb_nail, url },
     headers: {
-      idToken: cookie.get('superstar_token'),
+      'x-access-token': cookie.get('superstar_token'),
       'Content-Type': 'application/json'
     }
   });
@@ -153,7 +153,7 @@ export const likeVideo = async (videoId: string, title: string) => {
     url: `${baseURL}/starrecords/videos/${videoId}/like`,
     data: { title },
     headers: {
-      idToken: cookie.get('superstar_token'),
+      'x-access-token': cookie.get('superstar_token'),
       'Content-Type': 'application/json'
     }
   });
@@ -166,7 +166,7 @@ export const deleteVideo = async (videoId: string, title: string) => {
     url: `${baseURL}/starrecords/videos/${videoId}`,
     data: { title },
     headers: {
-      idToken: cookie.get('superstar_token'),
+      'x-access-token': cookie.get('superstar_token'),
       'Content-Type': 'application/json'
     }
   });
@@ -185,7 +185,7 @@ export const addComment = async (
     url: `${baseURL}/starrecords/videos/${videoId}/comment`,
     data: { userId, comment, mediaType },
     headers: {
-      idToken: cookie.get('superstar_token'),
+      'x-access-token': cookie.get('superstar_token'),
       'Content-Type': 'application/json'
     }
   });
