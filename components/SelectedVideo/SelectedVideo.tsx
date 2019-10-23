@@ -7,8 +7,8 @@ import { isAdmin } from '../../lib/auth';
 
 const SelectedVideo = (props: {
   currentVideo: IVideo;
-  handleLike: (id: string) => void;
-  handleDelete: (id: string) => void;
+  handleLike: (id: string, title: string) => void;
+  handleDelete: (id: string, title: string) => void;
   addComment: (comment: string) => void;
   comments: IFeedback[];
 }) => (
@@ -26,14 +26,28 @@ const SelectedVideo = (props: {
         <MDBCardText>
           {props.currentVideo.title}
           <span className='d-flex justify-content-between my-2'>
-            <span onClick={() => props.handleLike(props.currentVideo._id)}>
+            <span
+              onClick={() =>
+                props.handleLike(
+                  props.currentVideo.id,
+                  props.currentVideo.title
+                )
+              }
+            >
               <i className='fa fa-heart mr-1' style={{ color: 'red' }}></i>
               <span className='text-muted' style={{ fontSize: '0.8rem' }}>
                 ({props.currentVideo.likes})
               </span>
             </span>
             {isAdmin() ? (
-              <span onClick={() => props.handleDelete(props.currentVideo._id)}>
+              <span
+                onClick={() =>
+                  props.handleDelete(
+                    props.currentVideo.id,
+                    props.currentVideo.title
+                  )
+                }
+              >
                 <i className='fa fa-trash mr-1' style={{ color: 'red' }}></i>
               </span>
             ) : null}

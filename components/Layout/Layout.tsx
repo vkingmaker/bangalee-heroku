@@ -45,7 +45,6 @@ class Layout extends React.Component<ILayout, { isOpen: boolean }> {
       <MDBContainer className='main mx-0' fluid>
         <MDBRow>
           <MDBCol className='mx-0 px-0'>
-            {/* {console.log('NAV-BAR')} */}
             <MDBNavbar color='black' dark expand='md' fixed='top'>
               <MDBNavbarBrand>
                 <Link href='/index'>
@@ -109,7 +108,7 @@ class Layout extends React.Component<ILayout, { isOpen: boolean }> {
                       <MDBDropdown>
                         <MDBDropdownToggle nav caret>
                           <span className='mr-2'>
-                            {cookie.get('superstar_name')}
+                            {cookie.get('superstar_email')}
                           </span>
                         </MDBDropdownToggle>
                         <MDBDropdownMenu>

@@ -20,14 +20,15 @@ class Pictures extends Component {
   };
   handleDelete = (
     event: React.MouseEvent<HTMLSpanElement, MouseEvent>,
-    photoId: string
+    photoId: string,
+    caption: string
   ) => {
     event.preventDefault();
 
-    deletePicture(photoId)
+    deletePicture(photoId, caption)
       .then(res => {
         const updatedPicture = this.state.picture.filter((picture: IPhoto) => {
-          return picture._id !== photoId;
+          return picture.id !== photoId;
         });
 
         this.setState({
@@ -42,15 +43,16 @@ class Pictures extends Component {
 
   handleLike = (
     event: React.MouseEvent<HTMLSpanElement, MouseEvent>,
-    photoId: string
+    photoId: string,
+    caption: string
   ) => {
     event.preventDefault();
 
-    likePicture(photoId).then(res => {
+    likePicture(photoId, caption).then(res => {
       let updatePicture: IPhoto[] = [...this.state.picture];
       if (res.data.caption) {
         this.state.picture.find((photo: IPhoto, i: number) => {
-          if (photo._id === photoId) {
+          if (photo.id === photoId) {
             updatePicture[i] = res.data;
 
             this.setState({
@@ -89,7 +91,7 @@ class Pictures extends Component {
             {this.state.picture.length ? (
               this.state.picture.map((picture: IPhoto) => {
                 return (
-                  <MDBCol md='4' className='mb-4' key={picture._id}>
+                  <MDBCol md='4' className='mb-4' key={picture.id}>
                     <MDBCard className='mb-2' style={{ height: 450 + 'px' }}>
                       <MDBCardImage
                         className='img-fluid w-100 border'
@@ -99,7 +101,11 @@ class Pictures extends Component {
                       <MDBCardBody>
                         <MDBCardText>{picture.caption}</MDBCardText>
                         <span className='d-flex justify-content-between'>
-                          <span onClick={e => this.handleLike(e, picture._id)}>
+                          <span
+                            onClick={e =>
+                              this.handleLike(e, picture.id, picture.caption)
+                            }
+                          >
                             <i
                               className='fa fa-heart mr-1'
                               style={{ color: 'red' }}
@@ -113,7 +119,13 @@ class Pictures extends Component {
                           </span>
                           {isAdmin() ? (
                             <span
-                              onClick={e => this.handleDelete(e, picture._id)}
+                              onClick={e =>
+                                this.handleDelete(
+                                  e,
+                                  picture.id,
+                                  picture.caption
+                                )
+                              }
                             >
                               <i
                                 className='fa fa-trash mr-1'

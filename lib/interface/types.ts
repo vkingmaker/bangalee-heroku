@@ -1,5 +1,5 @@
 export interface IMusic {
-  _id: string;
+  id: string;
   title: string;
   url: string;
   albumart: string;
@@ -7,19 +7,19 @@ export interface IMusic {
 }
 
 export interface IPhoto {
-  _id: string;
+  id: string;
   caption: string;
   url: string;
   likes?: number;
 }
 
 export interface ITour {
-  _id: string;
+  id: string;
   venue: string;
 }
 
 export interface IVideo {
-  _id: string;
+  id: string;
   title: string;
   thumb_nail: string;
   url: string;
@@ -27,15 +27,15 @@ export interface IVideo {
 }
 
 export interface IComment {
-  _id?: string;
+  id?: string;
   message: string;
 }
 
 export interface IFeedback {
-  _id: string;
+  id: string;
   userId: string;
   videoId: string;
   mediaType: string;
-  comment: IComment;
+  comment: String;
   likes?: number;
 }

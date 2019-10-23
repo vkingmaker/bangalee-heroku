@@ -20,14 +20,15 @@ class Musics extends Component {
   };
   handleDelete = (
     event: React.MouseEvent<HTMLSpanElement, MouseEvent>,
-    musicId: string
+    musicId: string,
+    musicTitle: string
   ) => {
     event.preventDefault();
 
-    deleteMusic(musicId)
+    deleteMusic(musicId, musicTitle)
       .then(res => {
         const updatedMusic = this.state.music.filter((music: IMusic) => {
-          return music._id !== musicId;
+          return music.id !== musicId;
         });
 
         this.setState({
@@ -42,24 +43,29 @@ class Musics extends Component {
 
   handleLike = (
     event: React.MouseEvent<HTMLSpanElement, MouseEvent>,
-    musicId: string
+    musicId: string,
+    musicTitle: string
   ) => {
     event.preventDefault();
 
-    likeMusic(musicId).then(res => {
-      let updateMusic: IMusic[] = [...this.state.music];
-      if (res.data.title) {
-        this.state.music.find((music: IMusic, i: number) => {
-          if (music._id === musicId) {
-            updateMusic[i] = res.data;
+    likeMusic(musicId, musicTitle)
+      .then(res => {
+        let updateMusic: IMusic[] = [...this.state.music];
+        if (res.data.title) {
+          this.state.music.find((music: IMusic, i: number) => {
+            if (music.id === musicId) {
+              updateMusic[i] = res.data;
 
-            this.setState({
-              music: [...updateMusic]
-            });
-          }
-        });
-      }
-    });
+              this.setState({
+                music: [...updateMusic]
+              });
+            }
+          });
+        }
+      })
+      .catch(err => {
+        console.log('LIKE MUSIC ERROR ------->', err);
+      });
   };
   componentDidMount() {
     getMusic()
@@ -90,7 +96,7 @@ class Musics extends Component {
             {this.state.music.length ? (
               this.state.music.map((music: IMusic) => {
                 return (
-                  <MDBCol md='4' className='mb-4' key={music._id}>
+                  <MDBCol md='4' className='mb-4' key={music.id}>
                     <MDBCard className='mb-2'>
                       <MDBCardImage
                         className='img-fluid'
@@ -99,7 +105,11 @@ class Musics extends Component {
                       <MDBCardBody>
                         <MDBCardText>{music.title}</MDBCardText>
                         <span className='d-flex justify-content-between'>
-                          <span onClick={e => this.handleLike(e, music._id)}>
+                          <span
+                            onClick={e =>
+                              this.handleLike(e, music.id, music.title)
+                            }
+                          >
                             <i
                               className='fa fa-heart mr-1'
                               style={{ color: 'red' }}
@@ -113,7 +123,9 @@ class Musics extends Component {
                           </span>
                           {isAdmin() ? (
                             <span
-                              onClick={e => this.handleDelete(e, music._id)}
+                              onClick={e =>
+                                this.handleDelete(e, music.id, music.title)
+                              }
                             >
                               <i
                                 className='fa fa-trash mr-1'

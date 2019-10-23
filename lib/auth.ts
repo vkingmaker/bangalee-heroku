@@ -3,7 +3,7 @@ import axios from 'axios';
 import { getCookie } from '../lib/cookieStorage';
 import cookie from 'js-cookie';
 
-export const baseURL = 'http://localhost:3000';
+export const baseURL = 'http://localhost:3003';
 
 // export const baseURL =
 //   'https://a4k5wpp3pc.execute-api.us-east-1.amazonaws.com/prod' ||
@@ -53,12 +53,12 @@ export const auth = (ctx: any, verifyAdmin: boolean = false) => {
 
 export const isAdmin = () => {
   if (typeof window !== 'undefined') {
-    return cookie.get('superstar_isAdmin') == 'true';
+    return cookie.get('superstar_email') == 'vkingmaker@yahoo.com';
   }
 };
 
 export const isLoggedIn = () => {
   if (typeof window !== 'undefined') {
-    return cookie.get('superstar_name');
+    return cookie.get('superstar_email');
   }
 };

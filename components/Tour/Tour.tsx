@@ -5,9 +5,9 @@ import { MDBCol, MDBCard, MDBCardBody, MDBCardTitle } from 'mdbreact';
 const Tour = (props: { tours: ITour[] }) => (
   <React.Fragment>
     {props.tours.length ? (
-      props.tours.map((tour: { _id: string; venue: string }) => {
+      props.tours.map((tour: { id: string; venue: string }) => {
         return (
-          <MDBCol sm='10' className='mx-auto mb-5' key={tour._id}>
+          <MDBCol sm='10' className='mx-auto mb-5' key={tour.id}>
             <MDBCard>
               <MDBCardBody>
                 <MDBCardTitle>{tour.venue}</MDBCardTitle>

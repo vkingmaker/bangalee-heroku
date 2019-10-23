@@ -14,7 +14,7 @@ export const saveCookie = (detail: { [keys: string]: string }) => {
 export const removeCookie = () => {
   if (typeof window !== 'undefined') {
     cookie.remove('superstar_name');
-    cookie.remove('superstar_isAdmin');
+    cookie.remove('superstar_email');
   }
 };
 

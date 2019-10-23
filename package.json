@@ -28,7 +28,6 @@
     "react-dom": "^16.8.6",
     "styled-jsx": "^3.1.0"
   },
-  "proxy": "http://localhost:3002",
   "resolutions": {
     "styled-jsx": "3.0.0"
   },

@@ -24,8 +24,8 @@ class Login extends Component {
     LoginUser(this.state.email, this.state.password)
       .then(res => {
         if (typeof window !== 'undefined') {
-          const token = res.data.idToken;
-          saveCookie({ token });
+          const { idToken, email } = res.data;
+          saveCookie({ token: idToken, email });
         }
         Router.push('/index');
       })

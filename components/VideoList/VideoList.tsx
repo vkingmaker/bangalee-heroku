@@ -14,7 +14,7 @@ const VideoList = (props: {
           return (
             <VideoItem
               item={video}
-              key={video._id}
+              key={video.id}
               selectVideo={props.videoSelected}
             />
           );

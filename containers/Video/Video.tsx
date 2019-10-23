@@ -20,25 +20,25 @@ interface IVideoState {
 class Videos extends Component {
   state: IVideoState = {
     videos: [],
-    selectedVideo: { _id: '', title: '', thumb_nail: '', url: '' },
+    selectedVideo: { id: '', title: '', thumb_nail: '', url: '' },
     comments: [
       {
-        _id: '',
+        id: '',
         videoId: '',
         userId: '',
         likes: 0,
         mediaType: '',
-        comment: { message: '', _id: '' }
+        comment: ''
       }
     ],
     selectedComments: [
       {
-        _id: '',
+        id: '',
         videoId: '',
         userId: '',
         likes: 0,
         mediaType: '',
-        comment: { message: '', _id: '' }
+        comment: ''
       }
     ]
   };
@@ -61,7 +61,7 @@ class Videos extends Component {
           if (this.state.selectedVideo) {
             const selectedVideoComment = this.state.comments.filter(
               (comment: IFeedback) => {
-                return this.state.selectedVideo._id == comment.videoId;
+                return this.state.selectedVideo.id == comment.videoId;
               }
             );
 
@@ -79,9 +79,11 @@ class Videos extends Component {
   handleVideoSelected = (video: IVideo) => {
     const selectedVideoComment = this.state.comments.filter(
       (comment: IFeedback) => {
-        return video._id == comment.videoId;
+        return video.id == comment.videoId;
       }
     );
+
+    console.log('RETURNED VIDEO COMMENT--------->', selectedVideoComment);
 
     this.setState({
       selectedVideo: video,
@@ -89,13 +91,13 @@ class Videos extends Component {
     });
   };
 
-  likedVideo = (videoId: string) => {
-    likeVideo(videoId)
+  likedVideo = (videoId: string, videoTitle: string) => {
+    likeVideo(videoId, videoTitle)
       .then(res => {
         let updateVideo: IVideo[] = [...this.state.videos];
         if (res.data.title !== '') {
           this.state.videos.find((video: IVideo, i: number) => {
-            if (video._id === videoId) {
+            if (video.id === videoId) {
               updateVideo[i] = res.data;
 
               this.setState({
@@ -111,11 +113,11 @@ class Videos extends Component {
       });
   };
 
-  deletedVideo = (videoId: string) => {
-    deleteVideo(videoId)
+  deletedVideo = (videoId: string, videoTitle: string) => {
+    deleteVideo(videoId, videoTitle)
       .then(res => {
         const updatedVideo = this.state.videos.filter((video: IVideo) => {
-          return video._id !== videoId;
+          return video.id !== videoId;
         });
 
         this.setState({
@@ -130,16 +132,16 @@ class Videos extends Component {
   };
 
   postComment = (message: string) => {
-    const videoId = this.state.selectedVideo._id;
+    const videoId = this.state.selectedVideo.id;
 
-    addComment({ message }, videoId, 'video')
+    addComment(message, videoId, 'video')
       .then(res => {
         this.setState({
           comments: [...this.state.comments, res.data]
         });
         const selectedVideoComment = this.state.comments.filter(
           (comment: IFeedback) => {
-            return this.state.selectedVideo._id == comment.videoId;
+            return this.state.selectedVideo.id == comment.videoId;
           }
         );
 

@@ -5,12 +5,12 @@ const VideoComment = (props: { comments: IFeedback[] }) => (
   <Fragment>
     {props.comments.map((comment: IFeedback) => {
       return (
-        <div className='d-flex align-items-center px-2 mb-3' key={comment._id}>
+        <div className='d-flex align-items-center px-2 mb-3' key={comment.id}>
           <img
             src='https://icdn2.digitaltrends.com/image/digitaltrends/vinyl-record-player.jpg'
             className='d-inline-flex'
           />
-          <p className='ml-3 text-truncate'>{comment.comment.message}</p>
+          <p className='ml-3 text-truncate'>{comment.comment}</p>
         </div>
       );
     })}
