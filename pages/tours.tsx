@@ -12,6 +12,7 @@ class Tours extends Component {
   componentDidMount() {
     getTour()
       .then(res => {
+        console.log('RES CDM------------->', res);
         this.setState({
           tours: [...this.state.tours, ...res.data]
         });
