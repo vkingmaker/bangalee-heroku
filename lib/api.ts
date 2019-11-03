@@ -14,17 +14,9 @@ export const addMusic = async (
   title: string,
   url: string
 ) => {
-  const response = await axios.post(
-    `${baseURL}/starrecords/musics`,
-    {
-      data: { albumart, title, url, token }
-    },
-    {
-      headers: {
-        'x-access-token': cookie.get('superstar_token')
-      }
-    }
-  );
+  const response = await axios.post(`${baseURL}/starrecords/musics`, {
+    data: { albumart, title, url, token }
+  });
 
   return response;
 };
