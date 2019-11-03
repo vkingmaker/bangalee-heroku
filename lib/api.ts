@@ -19,8 +19,7 @@ export const addMusic = async (
     {
       albumart,
       title,
-      url,
-      token
+      url
     },
     {
       headers: {
