@@ -10,14 +10,15 @@ export const Subscription = async (
   Month: number,
   year: number
 ) => {
-  const response = await axios({
-    method: 'POST',
-    url: `${baseURL}/starrecords/subscription`,
-    data: { cardNumber, cvv, userId: userId, postCode, Month, year },
-    headers: {
-      'x-access-token': cookie.get('superstar_token')
+  const response = await axios.post(
+    `${baseURL}/starrecords/subscription`,
+    { cardNumber, cvv, userId: userId, postCode, Month, year },
+    {
+      headers: {
+        'X-API-Key': cookie.get('superstar_token')
+      }
     }
-  });
+  );
 
   return response;
 };

@@ -35,7 +35,10 @@ export const deleteMusic = async (musicId: string, title: string) => {
   const response = await axios.delete(
     `${baseURL}/starrecords/musics/${musicId}`,
     {
-      data: { title, token }
+      data: { title },
+      headers: {
+        'X-API-Key': token
+      }
     }
   );
 
@@ -45,9 +48,7 @@ export const deleteMusic = async (musicId: string, title: string) => {
 export const likeMusic = async (musicId: string, title: string) => {
   const response = await axios.patch(
     `${baseURL}/starrecords/musics/${musicId}/like`,
-    {
-      data: { title, token }
-    }
+    { title }
   );
   return response;
 };
@@ -55,8 +56,11 @@ export const likeMusic = async (musicId: string, title: string) => {
 export const likePicture = async (photoId: string, caption: string) => {
   const response = await axios.patch(
     `${baseURL}/starrecords/photos/${photoId}/like`,
+    { caption },
     {
-      data: { caption, token }
+      headers: {
+        'X-API-Key': token
+      }
     }
   );
   return response;
@@ -66,7 +70,10 @@ export const deletePicture = async (photoId: string, caption: string) => {
   const response = await axios.delete(
     `${baseURL}/starrecords/photos/${photoId}`,
     {
-      data: { caption, token }
+      data: { caption },
+      headers: {
+        'X-API-Key': token
+      }
     }
   );
 
@@ -80,9 +87,15 @@ export const getPicture = async () => {
 };
 
 export const addPicture = async (caption: string, url: string) => {
-  const response = await axios.post(`${baseURL}/starrecords/photos`, {
-    data: { caption, url, token }
-  });
+  const response = await axios.post(
+    `${baseURL}/starrecords/photos`,
+    { caption, url },
+    {
+      headers: {
+        'X-API-Key': token
+      }
+    }
+  );
 
   return response;
 };
@@ -94,9 +107,15 @@ export const getTour = async () => {
 };
 
 export const addTour = async (venue: string) => {
-  const response = await axios.post(`${baseURL}/starrecords/tours`, {
-    data: { venue, token }
-  });
+  const response = await axios.post(
+    `${baseURL}/starrecords/tours`,
+    { venue },
+    {
+      headers: {
+        'X-API-Key': token
+      }
+    }
+  );
 
   return response;
 };
@@ -106,9 +125,15 @@ export const addVideo = async (
   thumb_nail: string,
   url: string
 ) => {
-  const response = await axios.post(`${baseURL}/starrecords/videos`, {
-    data: { title, thumb_nail, url, token }
-  });
+  const response = await axios.post(
+    `${baseURL}/starrecords/videos`,
+    { title, thumb_nail, url },
+    {
+      headers: {
+        'X-API-Key': token
+      }
+    }
+  );
 
   return response;
 };
@@ -122,8 +147,11 @@ export const getVideo = async () => {
 export const likeVideo = async (videoId: string, title: string) => {
   const response = await axios.patch(
     `${baseURL}/starrecords/videos/${videoId}/like`,
+    { title },
     {
-      data: { title, token }
+      headers: {
+        'X-API-Key': token
+      }
     }
   );
   return response;
@@ -133,7 +161,10 @@ export const deleteVideo = async (videoId: string, title: string) => {
   const response = await axios.delete(
     `${baseURL}/starrecords/videos/${videoId}`,
     {
-      data: { title, token }
+      data: { title },
+      headers: {
+        'X-API-Key': token
+      }
     }
   );
 
@@ -148,8 +179,11 @@ export const addComment = async (
   const userId = cookie.get('superstar_userId');
   const response = await axios.post(
     `${baseURL}/starrecords/videos/${videoId}/comment`,
+    { userId, comment, mediaType, token },
     {
-      data: { userId, comment, mediaType, token }
+      headers: {
+        'X-API-Key': token
+      }
     }
   );
 
