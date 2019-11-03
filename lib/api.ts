@@ -14,9 +14,20 @@ export const addMusic = async (
   title: string,
   url: string
 ) => {
-  const response = await axios.post(`${baseURL}/starrecords/musics`, {
-    data: { albumart, title, url, token }
-  });
+  const response = await axios.post(
+    `${baseURL}/starrecords/musics`,
+    {
+      albumart,
+      title,
+      url,
+      token
+    },
+    {
+      headers: {
+        'X-API-Key': token
+      }
+    }
+  );
 
   return response;
 };
